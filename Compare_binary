@@ -1,0 +1,13 @@
+# Create age groups and calculate proportions
+combined_df = encoded_df[encoded_df['age'].between(41, 60)].copy()
+combined_df['age_group'] = pd.cut(combined_df['age'], bins=[40, 50, 60], labels=['41-50', '51-60'])
+
+proportions = combined_df.groupby(['age_group', 'income']).size().div(len(combined_df)).reset_index(name='proportion')
+
+# Visualization
+sns.barplot(x='age_group', y='proportion', hue='income', data=proportions)
+plt.title('Proportion of Income Categories by Age Group')
+plt.xlabel('Age Group')
+plt.ylabel('Proportion')
+plt.legend(title='Income')
+plt.show()
