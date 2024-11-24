@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Artist's Songs</title>
+</head>
+<body>
+<header>
+    <h1 th:text="${artist.firstName} + ' ' + ${artist.lastName}">FirstName LastName</h1>
+</header>
+
+<section>
+    <h2 th:text="${artist.bio}">Biography</h2>
+    <h2>Songs:</h2>
+    <ul>
+        <li th:each="song : ${artistSongs}" th:text="${song.title}">Sample Song Title</li>
+    </ul>
+</section>
+</body>
+</html>
